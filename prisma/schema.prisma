@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+enum formStatus {
+  forWho
+  type
+  name
+  template
+  completed
+}
+model User {
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String?
+  password              String?
+  accounts              Account[]
+  isTwoFactorEnabled    Boolean                @default(false)
+  twoFactorConfirmation twoFactorConfirmation?
+  forms                 form[]
+  templates             UserTemplate[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model VerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model ForgotPasswordToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model TwoFactorToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model twoFactorConfirmation {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
+}
+
+model form {
+  id String @id @default(cuid())
+  userId String
+  forWho String?
+  type String?
+  name String?
+  status formStatus
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
+}
+
+model templates {
+  id          String          @id @default(cuid())
+  name        String
+  by          String
+  description String
+  type        String
+  price       String
+  image       String
+  users       UserTemplate[]
+}
+
+model UserTemplate {
+  id        String   @id @default(cuid())
+  userId    String
+  templateId String
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template templates @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, templateId])
+}

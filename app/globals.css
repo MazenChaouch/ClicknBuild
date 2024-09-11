@@ -1,4 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+@layer components {
+  .animate-bounce-2s {
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+      50% {
+        transform: none;
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+    animation: bounce 1.5s infinite;
+  }
+}
+@layer utilities {
+  .custom-radial-gradient {
+    background: radial-gradient(
+      70% 80% at 50% 110%,
+      #9e79fd 0%,
+      #635af2 35%,
+      #877df5 65%,
+      #2137eb 100%
+    );
+  }
+  .bg-custom-gradient {
+    background: linear-gradient(
+      65.47deg,
+      rgba(120, 20, 233, 0.58) 6.08%,
+      rgba(48, 0, 146, 0.74) 34.87%,
+      rgba(72, 24, 146, 0.65) 62.77%,
+      #a5b9ff 88.39%
+    );
+  }
+}
