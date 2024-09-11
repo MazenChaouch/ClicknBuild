@@ -22,6 +22,7 @@ import { signUpAction } from "../sign-up/action";
 import { FormSuccess } from "@/app/_componants/auth/form-success";
 import { FormError } from "@/app/_componants/auth/form-error";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { signIn } from "next-auth/react";
 
 const Page = () => {
   const [isPending, startTransition] = useTransition();
@@ -53,17 +54,23 @@ const Page = () => {
         .catch(() => setError("Something went wrong, please try again."));
     });
   };
+  const onclick = (provider: "google" | "facebook") => {
+    startTransition(() => {
+      signIn(provider);
+      console.log(provider, "clicked");
+    });
+  };
   return (
-    <main className="h-screen w-screen flex">
-      <div className="sm:min-w-[40%] max-sm:w-full h-full flex flex-none flex-col">
-        <div className="sm:pl-16 py-6 flex items-center gap-4 border-b border-stone-200 max-sm:justify-center">
+    <main className="flex h-screen w-screen">
+      <div className="flex h-full flex-none flex-col max-sm:w-full sm:min-w-[40%]">
+        <div className="flex items-center gap-4 border-b border-stone-200 py-6 max-sm:justify-center sm:pl-16">
           <Image src={logo} alt="logo" className="size-12" />
-          <p className="font-extrabold text-2xl align-baseline inline-block text-blue-950">
+          <p className="inline-block align-baseline text-2xl font-extrabold text-blue-950">
             ClickPro
           </p>
         </div>
-        <div className="flex flex-col px-16 justify-center flex-grow gap-3 overflow-y-auto">
-          <p className="font-bold text-3xl text-blue-950">Sign Up</p>
+        <div className="flex flex-grow flex-col justify-center gap-3 overflow-y-auto px-16">
+          <p className="text-3xl font-bold text-blue-950">Sign Up</p>
           <p className="text-gray-500">This form is secured and encrypted!</p>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -82,7 +89,7 @@ const Page = () => {
                       >
                         <Icon
                           icon="mdi-light:account"
-                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-[#A0A3BD] size-8"
+                          className="absolute right-6 top-1/2 size-8 -translate-y-1/2 transform text-[#A0A3BD]"
                         />
                       </InputSign>
                     </FormControl>
@@ -103,7 +110,7 @@ const Page = () => {
                       >
                         <Icon
                           icon="mdi-light:email"
-                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-[#A0A3BD] size-8"
+                          className="absolute right-6 top-1/2 size-8 -translate-y-1/2 transform text-[#A0A3BD]"
                         />
                       </InputSign>
                     </FormControl>
@@ -128,7 +135,7 @@ const Page = () => {
                       >
                         <Icon
                           icon="mdi-light:lock"
-                          className="absolute right-6 top-1/2 transform -translate-y-1/2 text-[#A0A3BD] size-8"
+                          className="absolute right-6 top-1/2 size-8 -translate-y-1/2 transform text-[#A0A3BD]"
                         />
                       </InputSign>
                     </FormControl>
@@ -145,20 +152,20 @@ const Page = () => {
           </Form>
           <div className="flex w-full items-center justify-center overflow-hidden">
             <Separator className="my-4 w-full" />
-            <p className="text-gray-500 px-10 text-lg">or</p>
+            <p className="px-10 text-lg text-gray-500">or</p>
             <Separator className="my-4 w-full" />
           </div>
-          <SocialMedia />
+          <SocialMedia onclick={onclick} />
           <p className="text-center">
-            You already have an account?{" "}
-            <Link href="/sign-in" className="text-blue-500 ">
+            You already have an account?
+            <Link href="/sign-in" className="text-blue-500">
               Sign In
             </Link>
           </p>
         </div>
       </div>
-      <div className="w-full flex h-full max-sm:hidden sm:flex-grow">
-        <div className="w-full h-full relative">
+      <div className="flex h-full w-full max-sm:hidden sm:flex-grow">
+        <div className="relative h-full w-full">
           <Image src={coverImage} alt="cover" layout="fill" objectFit="cover" />
         </div>
       </div>
