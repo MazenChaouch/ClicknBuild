@@ -22,7 +22,7 @@ export const Sidebar = () => {
   pathname = path.basename(pathname);
   console.log(pathname);
   return (
-    <div className="flex h-screen w-72 flex-col items-center border-r bg-[#F9FBFF]">
+    <div className="flex h-screen w-96 flex-col items-center border-r bg-[#F9FBFF]">
       <Image src={logo} alt="logo" className="w-3/5 py-2" />
       <div className="relative flex w-11/12 items-center">
         <Input
