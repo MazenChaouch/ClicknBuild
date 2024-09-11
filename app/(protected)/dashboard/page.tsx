@@ -11,6 +11,10 @@ const Page = async () => {
   switch (formStatus) {
     case "template":
       redirect("/template");
+    case "forWho":
+    case "name":
+    case "type":
+      redirect("/form");
     default:
       return (
         <div className="flex h-screen w-full">

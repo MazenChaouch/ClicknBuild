@@ -19,28 +19,33 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         data: { emailVerified: new Date() },
       });
     },
-  },
-  callbacks: {
-    async signIn({ user, account }) {
-      const existingUser = await getUserById(user.id!);
-      if (!existingUser) return false;
-
-      if (account?.provider !== "credentials") {
+    async signIn({ isNewUser, user }) {
+      if (isNewUser) {
         const form = await db.form.findFirst({
           where: {
-            userId: existingUser.id,
+            userId: user?.id,
           },
         });
-        if (!form) {
+        console.log(form);
+        if (form == null) {
           await db.form.create({
             data: {
-              userId: existingUser.id,
+              userId: user?.id!,
               status: "forWho",
             },
           });
-          return true;
         }
       }
+    },
+  },
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider !== "credentials") {
+        return true;
+      }
+      const existingUser = await getUserById(user.id!);
+
+      if (!existingUser) return false;
 
       if (!existingUser.email) return false;
 
