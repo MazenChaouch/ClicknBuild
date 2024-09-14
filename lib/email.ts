@@ -19,11 +19,11 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
                   <div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc;">
                     <h2 style="text-align: center;">Two-Factor Authentication Confirmation</h2>
                     <p>Dear ${user?.name},</p>
-                    <p>You have recently requested to enable Two-Factor Authentication (2FA) for your account on Auth Next. To complete this process, please use the following code:</p>
+                    <p>You have recently requested to enable Two-Factor Authentication (2FA) for your account on ClicknBuildPro. To complete this process, please use the following code:</p>
                     <p style="text-align: center; font-size: 24px; font-weight: bold;">Verification Code: ${token}</p>
                     <p>Please enter this code within the specified timeframe to enable 2FA and enhance the security of your account. If you didn't initiate this request, please ignore this email.</p>
-                    <p>Thank you for using Auth Next.</p>
-                    <p>Best regards,<br>Auth Next</p>
+                    <p>Thank you for using ClicknBuildPro.</p>
+                    <p>Best regards,<br>ClicknBuildPro</p>
                   </div>
                 </body>
                 </html>
@@ -52,7 +52,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
                     <p>Thank you for signing up with us. To verify your email address and activate your account, please click on the button below:</p>
                     <p style="text-align: center;"><a href="${confirmationLink}" style="text-decoration: none; display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; border-radius: 5px;">Verify Email Address</a></p>
                     <p>If you didn't create an account with us, please disregard this email.</p>
-                    <p>Thank you,<br>Auth Next</p>
+                    <p>Thank you,<br>ClicknBuildPro</p>
                   </div>
                 </body>
                 </html>

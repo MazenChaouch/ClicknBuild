@@ -9,8 +9,9 @@ import { Section6 } from "./_componants/home/section6";
 import { Section7 } from "./_componants/home/section7";
 import { Section8 } from "./_componants/home/section8";
 import { Section9 } from "./_componants/home/section9";
+import { Chatbot } from "./_componants/home/chatbot";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="flex h-full w-full flex-col">
       <Navbar />
@@ -23,7 +24,9 @@ export default function Home() {
       <Section7 />
       <Section8 />
       <Section9 />
+      <Chatbot />
       <Footer />
     </main>
   );
-}
+};
+export default Home;

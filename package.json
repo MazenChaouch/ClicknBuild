@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.60",
+    "@assistant-ui/react": "^0.5.52",
+    "@assistant-ui/react-ai-sdk": "^0.6.4",
     "@auth/prisma-adapter": "^2.4.2",
     "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.19.1",
@@ -42,6 +45,7 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "@react-email/components": "^0.0.23",
     "@uploadthing/react": "^6.8.0",
+    "ai": "^3.3.37",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -53,6 +57,7 @@
     "next": "14.2.6",
     "next-auth": "^5.0.0-beta.20",
     "next-themes": "^0.3.0",
+    "openai": "^4.61.0",
     "react": "^18",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
