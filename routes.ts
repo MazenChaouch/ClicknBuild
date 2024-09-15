@@ -12,7 +12,6 @@ export const publicRoutes = [
   "/verify-email",
   "/social",
   "/templates",
-  "/api/assistant",
 ];
 /**
  * An array of routes that are only accessible to authenticated users.
