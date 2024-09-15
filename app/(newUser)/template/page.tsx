@@ -93,7 +93,7 @@ const Page = () => {
       <Carousel className="h-fit w-[90%]">
         <CarouselContent>
           {templates?.map((template, index) => (
-            <CarouselItem key={index} className="basis-1/5">
+            <CarouselItem key={index} className="basis-1/3">
               <CardTemplate
                 template={template}
                 setSelector={() => handleSelector(template.id)}

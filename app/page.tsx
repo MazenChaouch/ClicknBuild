@@ -9,7 +9,7 @@ import { Section6 } from "./_componants/home/section6";
 import { Section7 } from "./_componants/home/section7";
 import { Section8 } from "./_componants/home/section8";
 import { Section9 } from "./_componants/home/section9";
-import { Chatbot } from "./_componants/home/chatbot";
+import { MyAssistant } from "./_componants/MyAssistant";
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
       <Section7 />
       <Section8 />
       <Section9 />
-      <Chatbot />
+      <MyAssistant />
       <Footer />
     </main>
   );

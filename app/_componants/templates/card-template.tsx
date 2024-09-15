@@ -12,7 +12,7 @@ export const CardTemplate = ({ name, by, image, price }: CardTemplateProps) => {
         src={image}
         alt="temp1"
         className="rounded-xl border border-black"
-        width={300}
+        width={500}
         height={200}
       />
       <div className="flex items-center justify-between pt-6">

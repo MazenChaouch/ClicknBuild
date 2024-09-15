@@ -102,10 +102,10 @@ model templates {
   id          String          @id @default(cuid())
   name        String
   by          String
-  description String
   type        String
   price       String
   image       String
+  link        String
   users       UserTemplate[]
 }
 

@@ -37,10 +37,8 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("@assistant-ui/react/tailwindcss")({
-      components: ["assistant-modal"],
-      shadcn: true,
-    }),
+    require("@assistant-ui/react/tailwindcss"),
+    require("@assistant-ui/react-markdown/tailwindcss"),
   ],
 } satisfies Config;
 

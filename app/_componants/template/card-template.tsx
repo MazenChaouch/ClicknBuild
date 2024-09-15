@@ -20,7 +20,7 @@ export const CardTemplate = ({
         src={template.image}
         alt={template.name}
         className="h-full rounded-lg object-cover"
-        width={300}
+        width={500}
         height={200}
       />
       <p className="text-base font-semibold uppercase text-black">
