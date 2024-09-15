@@ -105,6 +105,7 @@ model templates {
   type        String
   price       String
   image       String
+  thumbnail   String      @default("ok")
   link        String
   users       UserTemplate[]
 }

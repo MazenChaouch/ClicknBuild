@@ -5,6 +5,7 @@ export type templates = {
   type: string;
   price: string;
   image: string;
+  thumbnail: string;
   link: string;
 }[];
 export type template = {
@@ -14,5 +15,6 @@ export type template = {
   type: string;
   price: string;
   image: string;
+  thumbnail: string;
   link: string;
 };

@@ -84,7 +84,7 @@ const page = () => {
                 <CaretRightIcon className="size-5" />
               </p>
             </div>
-            <ListTemplates types={[]} count={10} />
+            <ListTemplates types={[]} count={16} />
           </div>
         </div>
       </div>

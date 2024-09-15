@@ -1,25 +1,24 @@
-import Image, { StaticImageData } from "next/image";
+import { template } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 interface CardTemplateProps {
-  name: string;
-  by: string;
-  image: StaticImageData | string;
-  price: string;
+  template: template;
 }
-export const CardTemplate = ({ name, by, image, price }: CardTemplateProps) => {
+export const CardTemplate = ({ template }: CardTemplateProps) => {
   return (
-    <div className="flex h-fit w-full flex-col">
+    <Link href={template.link} className="flex h-fit w-full flex-col">
       <Image
-        src={image}
+        src={template.image}
         alt="temp1"
         className="rounded-xl border border-black"
         width={500}
         height={200}
       />
       <div className="flex items-center justify-between pt-6">
-        <p className="font-semibold">{name}</p>
-        <p className="text-sm font-semibold text-sky-500">{price}</p>
+        <p className="font-semibold">{template.name}</p>
+        <p className="text-sm font-semibold text-sky-500">{template.price}</p>
       </div>
-      <p className="text-sm">{by}</p>
-    </div>
+      <p className="text-sm">{template.by}</p>
+    </Link>
   );
 };

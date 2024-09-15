@@ -12,13 +12,7 @@ export const ListTemplates = async ({ count }: ListTemplatesProps) => {
   return (
     <div className="grid h-fit w-full grid-cols-5 gap-4">
       {templates!.slice(0, count).map((template, index) => (
-        <CardTemplate
-          key={index}
-          name={template.name}
-          price={template.price}
-          image={template.image}
-          by={template.by}
-        />
+        <CardTemplate key={index} template={template} />
       ))}
     </div>
   );

@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   const user = await getUserByEmail(email);
   await resend.emails.send({
-    from: "ClickPro <onboarding@resend.dev>",
+    from: "mail@clicknbuildpro.com",
     to: email,
     subject: "2FA confiramation",
     html: `<!DOCTYPE html>
@@ -36,7 +36,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmationLink = `${process.env.HOST_NAME}/verify-email?token=${token}`;
 
   await resend.emails.send({
-    from: "ClickPro <onboarding@resend.dev>",
+    from: "mail@clicknbuildpro.com",
     to: email,
     subject: "Confirm Your Email",
     html: `<!DOCTYPE html>
@@ -64,7 +64,7 @@ export const sendPasswordRestEmail = async (email: string, token: string) => {
   const confirmationLink = `${process.env.HOST_NAME}/new-password?token=${token}`;
 
   await resend.emails.send({
-    from: "ClickPro <onboarding@resend.dev>",
+    from: "mail@clicknbuildpro.com",
     to: email,
     subject: "Reset your password",
     html: `<!DOCTYPE html>
