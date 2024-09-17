@@ -7,17 +7,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from "next/link";
-import beaty from "@/app/assets/home/section8/beaty.png";
-import it from "@/app/assets/home/section8/it.png";
-import portfolio from "@/app/assets/home/section8/portfolio.png";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import { getAllTemplate } from "@/data/template";
 
-const templates: { title: string; img: StaticImageData }[] = [
-  { title: "beauty", img: beaty },
-  { title: "It service", img: it },
-  { title: "Portfolio", img: portfolio },
-];
-export const Section8 = () => {
+export const Section8 = async () => {
+  const templates = await getAllTemplate();
+
   return (
     <div className="flex max-h-full flex-col items-center justify-center gap-12 bg-[linear-gradient(114.84deg,_#2F40AD_29.42%,_#394FB7_40.66%,_#2A3BA9_54.32%,_#394FB7_66.76%,_#354AB5_100%)] py-24">
       <div className="flex flex-col items-center justify-center gap-4">
@@ -43,18 +38,22 @@ export const Section8 = () => {
       </Link>
       <Carousel className="h-fit w-[90%]">
         <CarouselContent>
-          {templates.map((template, index) => (
-            <CarouselItem key={index} className="basis-2/5">
-              <div className="flex h-full flex-col justify-between p-1">
-                <Image
-                  src={template.img}
-                  alt={template.title}
-                  className="h-full object-cover"
-                />
-                <p className="text-base font-semibold uppercase text-white">
-                  {template.title}
-                </p>
-              </div>
+          {templates!.map((template, index) => (
+            <CarouselItem key={index} className="basis-1/3">
+              <Link href={template.link} target="_blank">
+                <div className="flex h-full flex-col justify-between p-1">
+                  <Image
+                    src={template.image}
+                    alt={template.name}
+                    className="h-full object-cover"
+                    width={500}
+                    height={200}
+                  />
+                  <p className="text-base font-semibold uppercase text-white">
+                    {template.name}
+                  </p>
+                </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

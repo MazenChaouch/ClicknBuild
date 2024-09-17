@@ -20,10 +20,9 @@ export const Sidebar = () => {
   // get current path
   let pathname = usePathname();
   pathname = path.basename(pathname);
-  console.log(pathname);
   return (
     <div className="flex h-screen w-96 flex-col items-center border-r bg-[#F9FBFF]">
-      <Image src={logo} alt="logo" className="w-3/5 py-2" />
+      <Image src={logo} alt="logo" className="my-4 w-3/5 py-2" />
       <div className="relative flex w-11/12 items-center">
         <Input
           type="text"

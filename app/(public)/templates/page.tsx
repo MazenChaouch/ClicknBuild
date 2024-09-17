@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import cover from "@/app/assets/templates/cover.png";
 import bg from "@/app/assets/templates/bg.png";
-import { Navbar } from "../_componants/navbar";
 import business from "@/app/assets/templates/types/business.svg";
 import blog from "@/app/assets/templates/types/blog.svg";
 import portfolio from "@/app/assets/templates/types/portfolio.svg";
@@ -12,7 +11,8 @@ import sass from "@/app/assets/templates/types/sass.svg";
 import startup from "@/app/assets/templates/types/startup.svg";
 import personal from "@/app/assets/templates/types/personal.svg";
 import { ArrowRightIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import { ListTemplates } from "../_componants/templates/list-templates";
+import { Navbar } from "@/app/_componants/navbar";
+import { ListTemplates } from "@/app/_componants/templates/list-templates";
 const types: { name: string; icon: StaticImageData }[] = [
   { name: "Business", icon: business },
   { name: "Portfolio", icon: portfolio },

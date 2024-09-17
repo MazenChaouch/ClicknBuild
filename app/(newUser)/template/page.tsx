@@ -13,10 +13,12 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState, useTransition } from "react";
 import { templates } from "@/types";
 import { addUserTemplate, getTemplates } from "./action";
-import { getFormStatusById } from "@/data/form";
+import { getFormByUserId, getFormStatusById } from "@/data/form";
 import { currentUser } from "@/lib/currentUser";
 import { LogoutButton } from "@/app/_componants/auth/logout-button";
 import ButtonForm from "@/app/_componants/auth/buttonForm";
+import { form } from "@prisma/client";
+import { set } from "date-fns";
 
 const Page = () => {
   const [isPending, startTransition] = useTransition();
@@ -24,14 +26,15 @@ const Page = () => {
   const [templates, setTemplates] = useState<templates | null>(null);
   const [error, setError] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(true); // Add loading state
-
+  const [form, setForm] = useState<form | null>(null);
   useEffect(() => {
     const authenticateUser = async () => {
       const session = await currentUser();
       if (session?.id) {
-        const formStatus = await getFormStatusById(session.id);
-        if (formStatus !== null) {
-          switch (formStatus) {
+        const form = await getFormByUserId(session.id);
+        if (form?.status !== null) {
+          setForm(form);
+          switch (form?.status) {
             case "completed":
               window.location.href = "/dashboard";
               return;
@@ -72,7 +75,7 @@ const Page = () => {
   const onSubmit = () => {
     setError("");
     startTransition(() => {
-      addUserTemplate(selector!)
+      addUserTemplate(selector!, form?.name!)
         .then(() => {
           window.location.reload();
         })

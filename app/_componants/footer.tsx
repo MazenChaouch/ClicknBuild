@@ -65,10 +65,10 @@ const legalLinks = [
 
 export const Footer = () => {
   return (
-    <div className="h-fit w-full flex flex-col">
-      <div className="container flex flex-col  py-12">
-        <div className="flex justify-between w-full">
-          <div className="flex justify-between w-fit gap-8">
+    <div className="flex h-fit w-full flex-col border-t">
+      <div className="container flex flex-col py-12">
+        <div className="flex w-full justify-between">
+          <div className="flex w-fit justify-between gap-8">
             {footerSections.map((section) => (
               <div key={section.title} className="flex flex-col gap-4">
                 <h1 className="text-lg font-bold">{section.title}</h1>
@@ -95,7 +95,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="border-t-2">
-        <div className="container flex justify-between items-center py-4">
+        <div className="container flex items-center justify-between py-4">
           <div className="flex gap-2">
             {socials.map((social) => (
               <Image

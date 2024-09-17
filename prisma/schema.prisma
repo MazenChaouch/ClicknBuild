@@ -17,12 +17,18 @@ enum formStatus {
   template
   completed
 }
+enum Plan {
+  free
+  premium
+}
+
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
   email                 String?                @unique
   emailVerified         DateTime?
   image                 String?
+  plan                  Plan?                  @default(free) 
   password              String?
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
@@ -78,7 +84,7 @@ model TwoFactorToken {
 }
 
 model twoFactorConfirmation {
-  id String @id @default(cuid())
+  id     String @id @default(cuid())
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -87,36 +93,38 @@ model twoFactorConfirmation {
 }
 
 model form {
-  id String @id @default(cuid())
-  userId String
-  forWho String?
-  type String?
-  name String?
-  status formStatus
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id      String @id @default(cuid())
+  userId  String
+  forWho  String?
+  type    String?
+  name    String?
+  status  formStatus
+  user    User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
 }
 
 model templates {
-  id          String          @id @default(cuid())
+  id          String         @id @default(cuid())
   name        String
   by          String
   type        String
   price       String
   image       String
-  thumbnail   String      @default("ok")
+  thumbnail   String      
   link        String
   users       UserTemplate[]
 }
 
 model UserTemplate {
-  id        String   @id @default(cuid())
-  userId    String
+  id         String   @id @default(cuid())
+  userId     String
   templateId String
-
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  template templates @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  domain     String?  @unique
+  name       String
+  deployment Boolean  @default(false)
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template   templates @relation(fields: [templateId], references: [id], onDelete: Cascade)
 
   @@unique([userId, templateId])
 }

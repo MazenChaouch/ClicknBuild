@@ -15,7 +15,10 @@ export const getTemplates = async () => {
     return null;
   }
 };
-export const addUserTemplate = async (templateId: string) => {
+export const addUserTemplate = async (templateId: string, name: string) => {
+  const formatString = (input: string): string => {
+    return input.replace(/\s+/g, "").toLowerCase();
+  };
   try {
     const user = await currentUser();
     if (!user) {
@@ -25,6 +28,8 @@ export const addUserTemplate = async (templateId: string) => {
       data: {
         userId: user?.id!,
         templateId: templateId,
+        domain: formatString(name),
+        name: name,
       },
     });
     console.log("User template added");

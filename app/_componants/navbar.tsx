@@ -18,19 +18,19 @@ import { LogoutButton } from "./auth/logout-button";
 const solutions: { title: string; href: string; description: string }[] = [
   {
     title: "Éco-Signalements en Action",
-    href: "/signals",
+    href: "/",
     description:
       "Visualisez les progrès des signalements pour une ville urbaine plus écologique et saine.",
   },
   {
     title: "Ville Propre, Signalez!",
-    href: "/signaler",
+    href: "/",
     description:
       "Participez à notre initiative de signalement pour une ville plus propre et durable.",
   },
   {
     title: "Classement des Éco-Champions",
-    href: "/ranking",
+    href: "/",
     description:
       "Découvrez où vous vous situez dans notre classement et devenez un leader écologique!",
   },
@@ -38,19 +38,19 @@ const solutions: { title: string; href: string; description: string }[] = [
 const resources: { title: string; href: string; description: string }[] = [
   {
     title: "Les Postes Écologiques",
-    href: "/posts",
+    href: "/",
     description:
       "Partagez, Échangez, Contribuez! Découvrez les contributions écologiques de tous les utilisateurs.",
   },
   {
     title: "Partagez pour Prospérer",
-    href: "/poster",
+    href: "/",
     description:
       "Remplissez le formulaire et partagez vos objets pour encourager l'échange écologique.",
   },
   {
     title: "Mon Éco-Inventaire",
-    href: "/mesposts",
+    href: "/",
     description:
       "Gérez vos objets postés pour l'échange et suivez leur statut écologique.",
   },
@@ -58,13 +58,13 @@ const resources: { title: string; href: string; description: string }[] = [
 const home: { title: string; href: string; description: string }[] = [
   {
     title: "Qui sommes-nous?",
-    href: "/apropos",
+    href: "/",
     description:
       "Découvrez notre mission, notre vision et notre équipe pour un monde plus vert.",
   },
   {
     title: "Nous Contacter",
-    href: "/contact",
+    href: "/",
     description:
       "Contactez-nous pour toute question, suggestion ou collaboration.",
   },
@@ -166,9 +166,9 @@ export const Navbar = async () => {
           <NavigationMenu className="flex w-full items-center justify-center max-md:hidden">
             <NavigationMenuList className="flex w-full items-center justify-between py-3">
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+                <Link href="/templates" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Companies
+                    Templates
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -177,7 +177,7 @@ export const Navbar = async () => {
           <NavigationMenu className="flex w-full items-center justify-center max-md:hidden">
             <NavigationMenuList className="flex w-full items-center justify-between py-3">
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+                <Link href="/pricing" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Pricing
                   </NavigationMenuLink>
@@ -188,7 +188,7 @@ export const Navbar = async () => {
           <NavigationMenu className="flex w-full items-center justify-center max-md:hidden">
             <NavigationMenuList className="flex w-full items-center justify-between py-3">
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+                <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Contact
                   </NavigationMenuLink>
@@ -198,11 +198,18 @@ export const Navbar = async () => {
           </NavigationMenu>
         </div>
         {session ? (
-          <LogoutButton>
-            <Button className="rounded-full bg-[#166AEA] px-12 text-white hover:bg-[#166bead6]">
-              Sign Out
-            </Button>
-          </LogoutButton>
+          <div className="flex gap-2">
+            <Link href="/dashboard">
+              <Button className="rounded-full px-8" variant={"outline"}>
+                Go to Dashboard
+              </Button>
+            </Link>
+            <LogoutButton>
+              <Button className="rounded-full bg-[#166AEA] px-8 text-white hover:bg-[#166bead6]">
+                Sign Out
+              </Button>
+            </LogoutButton>
+          </div>
         ) : (
           <Link href="/sign-in">
             <Button className="rounded-full bg-[#166AEA] px-12 text-white hover:bg-[#166bead6]">

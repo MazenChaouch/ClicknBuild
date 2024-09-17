@@ -58,3 +58,8 @@ export const TypeSchema = z.object({
 export const NameSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
 });
+
+export const configSchema = z.object({
+  name: z.string().min(1, { message: "website name is required" }),
+  domain: z.string().min(1, { message: "domain is required" }),
+});
