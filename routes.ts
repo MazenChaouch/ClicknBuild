@@ -12,6 +12,7 @@ export const publicRoutes = [
   "/verify-email",
   "/social",
   "/templates",
+  "/pricing",
   "/api/chat",
 ];
 /**
