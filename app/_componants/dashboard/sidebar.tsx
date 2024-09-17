@@ -7,6 +7,8 @@ import searchIcon from "@/app/assets/dashboard/search.svg";
 import { Icon } from "@iconify/react";
 import { usePathname } from "next/navigation";
 import path from "path";
+import { LogoutButton } from "../auth/logout-button";
+import { Button } from "@/components/ui/button";
 const sidebarItems: { name: string; icon: string }[] = [
   { name: "Dashboard", icon: "ic:round-home" },
   { name: "Pages", icon: "ic:round-file-copy" },
@@ -40,6 +42,13 @@ export const Sidebar = () => {
             seleted={item.name.toLowerCase() === pathname}
           />
         ))}
+      </div>
+      <div className="absolute bottom-4">
+        <LogoutButton>
+          <Button className="rounded-full bg-[#166AEA] px-12 text-white hover:bg-[#166bead6]">
+            Sign Out
+          </Button>
+        </LogoutButton>
       </div>
     </div>
   );
