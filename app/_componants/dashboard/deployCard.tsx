@@ -10,28 +10,22 @@ export const DeployCard = ({ myTemplate }: { myTemplate: UserTemplate }) => {
   const [build, setBuild] = useState("nothing");
   const [deploy, setDeploy] = useState("nothing");
   const [domain, setDomain] = useState("nothing");
-  const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
     const delay = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
 
     const fakeLoader = async () => {
-      if (cancelled) return;
-
       setBuild("loading");
       await delay(5000);
-      if (cancelled) return;
 
       setBuild("success");
       setDeploy("loading");
       await delay(5000);
-      if (cancelled) return;
 
       setDeploy("success");
       setDomain("loading");
       await delay(6000);
-      if (cancelled) return;
 
       setDomain("success");
       await delay(2000);
@@ -42,15 +36,8 @@ export const DeployCard = ({ myTemplate }: { myTemplate: UserTemplate }) => {
     fakeLoader();
 
     return () => {};
-  }, [cancelled, myTemplate.id]);
+  }, [myTemplate.id]);
 
-  const handleCancel = () => {
-    if (build === "loading") setBuild("error");
-    if (deploy === "loading") setDeploy("error");
-    if (domain === "loading") setDomain("error");
-
-    setCancelled(true);
-  };
   return (
     <div className="flex h-full w-full flex-col gap-10">
       <p className="text-3xl font-semibold">Configure Project</p>
@@ -85,10 +72,7 @@ export const DeployCard = ({ myTemplate }: { myTemplate: UserTemplate }) => {
           <Loader state={domain} />
         </div>
       </div>
-      <Button
-        className="w-fit self-end bg-[#4F46E5] p-6 text-xl hover:bg-[#4e46e5e0]"
-        onClick={handleCancel}
-      >
+      <Button className="w-fit self-end bg-[#4F46E5] p-6 text-xl hover:bg-[#4e46e5e0]">
         Cancel Deployment
       </Button>
     </div>

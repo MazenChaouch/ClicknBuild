@@ -41,9 +41,11 @@ const Page = async ({ params }: { params: { Id: string } }) => {
             <p className="text-7xl font-extrabold tracking-tighter text-stone-800">
               You&apos;re almost done.
             </p>
-            <Button className="rounded-3xl bg-[#2D5BFF] bg-gradient-to-br from-[#868CFF] to-[#4318FF] p-8 text-2xl font-semibold text-white transition-all duration-1000 hover:bg-gradient-to-tl hover:from-[#868CFF] hover:to-[#4318FF]">
-              Upgrade to Pro
-            </Button>
+            <Link href={"/pricing"} target="_blank">
+              <Button className="rounded-3xl bg-[#2D5BFF] bg-gradient-to-br from-[#868CFF] to-[#4318FF] p-8 text-2xl font-semibold text-white transition-all duration-1000 hover:bg-gradient-to-tl hover:from-[#868CFF] hover:to-[#4318FF]">
+                Upgrade to Pro
+              </Button>
+            </Link>
           </div>
           <p className="mt-4 px-8 text-stone-500">
             Please wait a few moment for the deployment to be done.
