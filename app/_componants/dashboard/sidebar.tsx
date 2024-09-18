@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import path from "path";
 import { LogoutButton } from "../auth/logout-button";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const sidebarItems: { name: string; icon: string }[] = [
   { name: "Dashboard", icon: "ic:round-home" },
   { name: "Pages", icon: "ic:round-file-copy" },
@@ -24,7 +25,9 @@ export const Sidebar = () => {
   pathname = path.basename(pathname);
   return (
     <div className="flex h-screen w-96 flex-col items-center border-r bg-[#F9FBFF]">
-      <Image src={logo} alt="logo" className="my-4 w-3/5 py-2" />
+      <Link href="/" target="_blank" className="my-4 w-3/5 py-2">
+        <Image src={logo} alt="logo" />
+      </Link>
       <div className="relative flex w-11/12 items-center">
         <Input
           type="text"

@@ -15,18 +15,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { UserTemplate } from "@prisma/client";
 import { useTransition } from "react";
-import { configAction } from "@/app/(protected)/dashboard/(deployment)/config/[templateId]/action";
+import { configAction } from "@/app/(protected)/dashboard/(deployment)/config/[Id]/action";
 
 interface ConfigFormProps {
   myTemplate: UserTemplate;
   userId: string;
   templateId: string;
 }
-export const ConfigForm = ({
-  myTemplate,
-  userId,
-  templateId,
-}: ConfigFormProps) => {
+export const ConfigForm = ({ myTemplate }: ConfigFormProps) => {
   const [isPending, startTrasition] = useTransition();
   const form = useForm<z.infer<typeof configSchema>>({
     resolver: zodResolver(configSchema),

@@ -77,16 +77,19 @@ const Page = () => {
     });
   };
   return (
-    <main className="flex flex-col items-center justify-evenly space-y-8 h-full w-full py-4">
+    <main className="flex h-full w-full flex-col items-center justify-evenly space-y-8 py-4">
       <Image
         src={bg}
         alt="bg"
-        className="absolute -z-10 object-fill object-center h-full"
+        className="absolute -z-10 h-full object-fill object-center"
       />
-      <div className="flex flex-col gap-4 items-center justify-center">
-        <p className="font-bold text-3xl">ClickPro</p>
-        <Image src={logo} alt="logo" className="size-20" />
-        <p className="font-bold text-3xl">Sign in to your account</p>
+      <div className="flex flex-col items-center justify-center gap-4">
+        <p className="text-3xl font-bold">ClickPro</p>
+        <Link href="/">
+          <Image src={logo} alt="logo" className="size-20" />
+        </Link>
+
+        <p className="text-3xl font-bold">Sign in to your account</p>
       </div>
       <Card className="w-[500px] rounded-[34px] border-0 shadow-xl">
         <CardHeader />
@@ -132,7 +135,7 @@ const Page = () => {
                             <Image
                               src={account}
                               alt="logo"
-                              className="absolute right-8 top-1/2 transform -translate-y-1/2"
+                              className="absolute right-8 top-1/2 -translate-y-1/2 transform"
                             />
                           </InputSign>
                         </FormControl>
@@ -158,7 +161,7 @@ const Page = () => {
                             <Image
                               src={lock}
                               alt="logo"
-                              className="absolute right-8 top-1/2 transform -translate-y-1/2"
+                              className="absolute right-8 top-1/2 -translate-y-1/2 transform"
                             />
                           </InputSign>
                         </FormControl>
@@ -192,15 +195,15 @@ const Page = () => {
           </Form>
           <div className="flex w-full items-center justify-center overflow-hidden py-8">
             <Separator className="my-4 w-full" />
-            <p className="text-gray-500 px-10 text-lg">or</p>
+            <p className="px-10 text-lg text-gray-500">or</p>
             <Separator className="my-4 w-full" />
           </div>
           <SocialMedia onclick={onclick} />
-          <p className="text-center py-4">
+          <p className="py-4 text-center">
             You don&apos;t have an account?{" "}
             <Link
               href="/sign-up"
-              className="text-blue-500 "
+              className="text-blue-500"
               aria-disabled={isPending}
             >
               Sign up

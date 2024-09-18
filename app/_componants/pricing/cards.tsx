@@ -27,7 +27,7 @@ export const Cards = () => {
     {
       logo: basicIcon,
       name: "Basic",
-      price: isAnnual ? "500DT" : "50DT",
+      price: isAnnual ? "350DT" : "35DT",
       period: isAnnual ? "/year" : "/monthly",
       for: "For individuals",
       description:
@@ -41,7 +41,7 @@ export const Cards = () => {
     },
     {
       logo: proIcon,
-      name: "Pro",
+      name: "Premium",
       price: isAnnual ? "2000DT" : "200DT",
       period: isAnnual ? "/year" : "/monthly",
       for: "For startups",
@@ -56,8 +56,8 @@ export const Cards = () => {
     },
     {
       logo: ultimateIcon,
-      name: "Ultimate",
-      price: isAnnual ? "1000DT" : "100DT",
+      name: "Diamand",
+      price: isAnnual ? "750DT" : "75DT",
       period: isAnnual ? "/year" : "/monthly",
       for: "For big companies",
       description:

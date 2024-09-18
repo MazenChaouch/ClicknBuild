@@ -64,7 +64,9 @@ const Page = () => {
     <main className="flex h-screen w-screen">
       <div className="flex h-full flex-none flex-col max-sm:w-full sm:min-w-[40%]">
         <div className="flex items-center gap-4 border-b border-stone-200 py-6 max-sm:justify-center sm:pl-16">
-          <Image src={logo} alt="logo" className="size-12" />
+          <Link href="/">
+            <Image src={logo} alt="logo" className="size-12" />
+          </Link>
           <p className="inline-block align-baseline text-2xl font-extrabold text-blue-950">
             ClickPro
           </p>

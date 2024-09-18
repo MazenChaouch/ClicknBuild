@@ -1,5 +1,5 @@
 "use client";
-import { deployAction } from "@/app/(protected)/dashboard/(deployment)/deploy/[templateId]/action";
+import { deployAction } from "@/app/(protected)/dashboard/(deployment)/deploy/[Id]/action";
 import { Button } from "@/components/ui/button";
 import { UserTemplate } from "@prisma/client";
 import { CaretRightIcon } from "@radix-ui/react-icons";

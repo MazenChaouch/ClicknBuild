@@ -13,12 +13,12 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState, useTransition } from "react";
 import { templates } from "@/types";
 import { addUserTemplate, getTemplates } from "./action";
-import { getFormByUserId, getFormStatusById } from "@/data/form";
+import { getFormByUserId } from "@/data/form";
 import { currentUser } from "@/lib/currentUser";
 import { LogoutButton } from "@/app/_componants/auth/logout-button";
 import ButtonForm from "@/app/_componants/auth/buttonForm";
 import { form } from "@prisma/client";
-import { set } from "date-fns";
+import Link from "next/link";
 
 const Page = () => {
   const [isPending, startTransition] = useTransition();
@@ -89,7 +89,13 @@ const Page = () => {
   }
   return (
     <div className="relative flex h-screen max-h-full w-full flex-col items-center justify-center gap-16">
-      <Image src={bg} alt="bg" className="absolute -z-10 h-full object-cover" />
+      <Link href="/" target="_blank">
+        <Image
+          src={bg}
+          alt="bg"
+          className="absolute -z-10 h-full object-cover"
+        />
+      </Link>
       <p className="max-w-6xl text-center text-8xl font-bold text-[#09006A]">
         Choosing your website template
       </p>
