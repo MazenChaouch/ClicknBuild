@@ -41,7 +41,7 @@ export const forWhoSchema = z.object({
 });
 export const types = [
   { label: "Portfolio", value: "Portfolio" },
-  { label: "E-commerce", value: "Shopping" },
+  { label: "E-commerce", value: "E-commerce" },
   { label: "Online store", value: "Online store" },
 ] as const;
 

@@ -89,13 +89,7 @@ const Page = () => {
   }
   return (
     <div className="relative flex h-screen max-h-full w-full flex-col items-center justify-center gap-16">
-      <Link href="/" target="_blank">
-        <Image
-          src={bg}
-          alt="bg"
-          className="absolute -z-10 h-full object-cover"
-        />
-      </Link>
+      <Image src={bg} alt="bg" className="absolute -z-10 h-full object-cover" />
       <p className="max-w-6xl text-center text-8xl font-bold text-[#09006A]">
         Choosing your website template
       </p>
