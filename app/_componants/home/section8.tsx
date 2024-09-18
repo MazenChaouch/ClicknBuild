@@ -12,7 +12,7 @@ import { getAllTemplate } from "@/data/template";
 
 export const Section8 = async () => {
   const templates = await getAllTemplate();
-
+  console.log(templates);
   return (
     <div className="flex max-h-full flex-col items-center justify-center gap-12 bg-[linear-gradient(114.84deg,_#2F40AD_29.42%,_#394FB7_40.66%,_#2A3BA9_54.32%,_#394FB7_66.76%,_#354AB5_100%)] py-24">
       <div className="flex flex-col items-center justify-center gap-4">
